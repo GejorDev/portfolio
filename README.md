@@ -13,8 +13,6 @@ SPA (Single Page Application) optimized for showcasing professional projects
 
 ## 🌐 Live Demo
 
-| **Deploy** |
-|:-|:|
 | [`🚀 https://your-domain.vercel.app`](https://your-domain.vercel.app) |
 
 > 🛣️ *Coming soon - update when deployment is ready!*
