@@ -2,31 +2,36 @@ import Hero from './components/Hero'
 import Header from './components/Header'
 import About from './components/About'
 import Skills from './components/Skills'
-import Contacts from './components/Contacts'
 import Footer from './components/Footer'
+import person from './data/person.json'
+import skills from './data/skills.json'
+
+// Datos centralizados para todo el portfolio
+const DATA = {
+  person,
+  skills
+}
 
 function App() {
+  const { person, skills } = DATA
   return (
     <div className="min-h-screen bg-gray-900">
       <Header />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <section id="hero" className="mb-16">
-          <Hero />
+          <Hero person={person} />
         </section>
 
         <section id="about" className="mb-16">
-          <About />
+          <About fullBio={person.fullBio} />
         </section>
 
         <section id="skills" className="mb-16">
-          <Skills />
+          <Skills skills={skills} />
         </section>
-
-        <section id="contacto">
-          <Contacts />
-        </section>
+      
       </main>
-      <Footer />
+      <Footer person={person} />
     </div>
   )
 }

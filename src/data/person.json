@@ -1,0 +1,12 @@
+{
+  "name": "Jorge Diego Alonso",
+  "surname": "Alonso",
+  "brandName": "GejorDev",
+  "tagline": "Desarrollador Full Stack junior",
+  "fullBio": "Desarrollador Full Stack junior con experiencia en TypeScript, React, Next.js y FastAPI. Formación especializada en Desarrollo de Aplicaciones Web e Inteligencia Artificial. He participado en proyectos reales aplicando metodologías ágiles y control de versiones con Git. Orientado a la resolución de problemas, con capacidad de adaptación rápida y motivación por seguir creciendo en entornos de desarrollo dinámicos.",
+  "location": "Tomiño, España",
+  "phone": "664339696",
+  "email": "jorgediegoalonso12@gmail.com",
+  "linkedIn": "https://www.linkedin.com/in/jorge-diego-alonso-495826342",
+  "github": "https://github.com/GejorDev/portfolio"
+}

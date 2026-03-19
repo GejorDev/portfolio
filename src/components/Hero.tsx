@@ -1,4 +1,43 @@
-function Hero() {
+// Props para el Hero
+interface HeroProps {
+  person: {
+    brandName: string
+    fullBio: string
+    linkedIn: string
+    email: string
+    phone: string
+    tagline?: string
+  }
+}
+
+function Hero({ person }: HeroProps) {
+  const { brandName, linkedIn, email, phone } = person
+
+  // Funciones auxiliares fuera de render para evitar crear referencias nuevas
+  const linkedinIcon = (
+    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.762 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.084 3.846-2.175 3.846-2.175s2.45.09 3.846 2.175v9.215z"/>
+    </svg>
+  )
+
+  const emailIcon = (
+    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+    </svg>
+  )
+
+  const phoneIcon = (
+    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.12.35.03.75-.24 1.02l-2.2 2.2z"/>
+    </svg>
+  )
+
+  const contactLinks = [
+    { type: 'linkedin', label: 'LinkedIn', key: 'linkedin', icon: linkedinIcon, href: linkedIn, target: '_blank', rel: 'noopener noreferrer' } as const,
+    { type: 'email', label: 'Email', key: 'email', icon: emailIcon, href: `mailto:${email}`, target: '_self', rel: 'noopener noreferrer' } as const,
+    { type: 'phone', label: 'Teléfono', key: 'phone', icon: phoneIcon, href: `tel:+34${phone}`, target: '_self', rel: 'noopener noreferrer' } as const
+  ]
+
   return (
     <div className="relative py-20 lg:py-32 px-4 overflow-hidden">
       {/* Background decorations */}
@@ -6,44 +45,27 @@ function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl translate-y-1/2 translate-x-1/2"></div>
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <div className="mb-6 flex justify-center">
-          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl relative">
-            <div className="relative z-10 text-white text-center">
-              <svg className="w-10 h-10 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-            </div>
-          </div>
-        </div>
-        
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-          Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">GejorDev</span>
+          Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{brandName}</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-          Desarrollador de Frontend especializado en <span className="text-blue-400 font-semibold">React 19</span> y
-          <span className="text-purple-400 font-semibold"> Tailwind CSS</span>.
+        <p className="text-xl md:text-2xl text-white mb-10 leading-relaxed">
+          {person.tagline}
         </p>
         
         <div className="flex flex-wrap justify-center gap-4">
-          <a
-            href="#about"
-            className="btn-primary bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center"
-          >
-            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-            Conéctame
-          </a>
-          <a
-            href="#contacto"
-            className="group bg-gray-800/60 backdrop-blur-sm hover:bg-blue-900/50 border border-gray-700 hover:border-blue-400 text-gray-300 group-hover:text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 inline-flex items-center"
-          >
-            Contáctame
-            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </a>
+          {contactLinks.map((contact) => (
+            <a
+              key={contact.key}
+              href={contact.href}
+              target={contact.target}
+              rel={contact.rel}
+              className="btn-primary bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center"
+            >
+              {contact.icon}
+              <span>{contact.label}</span>
+            </a>
+          ))}
         </div>
       </div>
     </div>

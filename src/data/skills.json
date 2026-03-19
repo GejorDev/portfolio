@@ -1,0 +1,63 @@
+{
+  "lenguajes": [
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "Java",
+    "C#",
+    "PHP"
+  ],
+  "frontend": [
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "HTML",
+    "CSS"
+  ],
+  "backend": [
+    "FastAPI",
+    "SpringBoot",
+    "APIs RESTful"
+  ],
+  "dataScience": [
+    "Pandas",
+    "NumPy",
+    "Matplotlib",
+    "Scikit-learn",
+    "Análisis y visualización de datos",
+    "Machine Learning",
+    "ETL"
+  ],
+  "basesDeDatos": [
+    "PostgreSQL",
+    "MongoDB",
+    "Redis"
+  ],
+  "herramientas": [
+    "Git",
+    "Postman"
+  ],
+  "ciCd": [
+    "GitHub Actions",
+    "CI/CD",
+    "Docker"
+  ],
+  "fundamentos": [
+    "Programación orientada a objetos",
+    "Patrones de diseño",
+    "Metodologías ágiles"
+  ],
+  "softSkills": [
+    "Trabajo en equipo",
+    "Resolución de problemas",
+    "Capacidad de aprendizaje"
+  ],
+  "idiomas": {
+    "espanol": {
+      "level": "Nativo"
+    },
+    "ingles": {
+      "level": "B1"
+    }
+  }
+}
