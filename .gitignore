@@ -1,30 +1,40 @@
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-# Dependencies
+# ═══════════════════════════════════════════════════════════════════════════
+# DEPENDENCIAS
+# ═══════════════════════════════════════════════════════════════════════════
 node_modules/
+package-lock.json
 
-# Build outputs
+# ═══════════════════════════════════════════════════════════════════════════
+# BUILD OUTPUTS
+# ═══════════════════════════════════════════════════════════════════════════
 dist/
 dist-ssr/
-*.local
 build/
+.vite/
 
-# Tailwind CSS cache
+# ═══════════════════════════════════════════════════════════════════════════
+# TESTING
+# ═══════════════════════════════════════════════════════════════════════════
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+playwright/.auth/
+
+# ═══════════════════════════════════════════════════════════════════════════
+# CACHE
+# ═══════════════════════════════════════════════════════════════════════════
 .cache/
 tailwind/.cache/
-.next/
-.nuxt/
+.vitest/
+*.tsbuildinfo
 
-# Editor directories and files
+# ═══════════════════════════════════════════════════════════════════════════
+# EDITOR
+# ═══════════════════════════════════════════════════════════════════════════
 .vscode/
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea/
 *.suo
 *.ntvs*
@@ -33,33 +43,58 @@ tailwind/.cache/
 *.sw?
 *.pid
 *.pids
-*.plg
-.sw?
+*.sw
 .DS_Store
+Thumbs.db
 
-# Optional npm cache
-.npm/
-.nx/
+# ═══════════════════════════════════════════════════════════════════════════
+# ENVIRONMENT
+# ═══════════════════════════════════════════════════════════════════════════
+.env
+.env.local
+.env.*.local
+!.env.example
 
-# TypeScript cache
-.esbuild/
-.tscache/
-
-# Node.js
+# ═══════════════════════════════════════════════════════════════════════════
+# LOGS
+# ═══════════════════════════════════════════════════════════════════════════
+logs/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-lerna-debug.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# Testing
-coverage/
-.nyc_output/
+# ═══════════════════════════════════════════════════════════════════════════
+# AGENT / AI TOOLS (locales)
+# ═══════════════════════════════════════════════════════════════════════════
+skills-lock.json
+skills.json
+.atl/
+.engram/
+.lsp/
+.toolchain/
 
-# Misc
+# ═══════════════════════════════════════════════════════════════════════════
+# GENERATED DOCS
+# ═══════════════════════════════════════════════════════════════════════════
+*.spec.generated.md
+*.spec.local.md
+*.proposal.md
+*.design.md
+*.tasks.md
+*.generated.md
+*.tmp.md
+*.draft.md
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MISC
+# ═══════════════════════════════════════════════════════════════════════════
 *.pem
 *.key
-.env.local
-.env.development.local
-.env.test.local
-.env.qa.local
+*.crt
+
+# ═══════════════════════════════════════════════════════════════════════════
+# IGNORAR PERO POSIBLEMENTE COMMITEAR EN EL FUTURO
+# ═══════════════════════════════════════════════════════════════════════════
+# openspec/           # Descomentar si usas openspec con archivos

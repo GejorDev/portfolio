@@ -10,6 +10,7 @@ SPA (Single Page Application) optimized for showcasing professional projects
 - 🔧 **TypeScript** - Strict typing to ensure code quality and maintain integrity
 - 🎨 **ESLint + Prettier** - Professional linting and code formatting configuration
 - ⚡ **HMR (Hot Module Replacement)** - Instant code change reload during development
+- 🌐 **i18n (Multilanguage)** - Spanish/English support with react-i18next, language detection, and persistent preference
 
 ## 🌐 Live Demo
 

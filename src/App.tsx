@@ -1,19 +1,24 @@
+import { useEffect } from 'react'
 import Hero from './components/Hero'
 import Header from './components/Header'
 import About from './components/About'
 import Skills from './components/Skills'
 import Footer from './components/Footer'
-import person from './data/person.json'
+import personRaw from './data/person.json'
 import skills from './data/skills.json'
+import { useTranslation } from 'react-i18next'
+import { getLocalizedPerson } from './i18n/utils'
 
-// Datos centralizados para todo el portfolio
-const DATA = {
-  person,
-  skills
-}
 
 function App() {
-  const { person, skills } = DATA
+  const { i18n } = useTranslation()
+  const person = getLocalizedPerson(personRaw, i18n.language)
+
+  // Update HTML lang attribute when language changes
+  useEffect(() => {
+    document.documentElement.lang = i18n.language
+  }, [i18n.language])
+
   return (
     <div className="min-h-screen bg-gray-900">
       <Header />
@@ -23,7 +28,7 @@ function App() {
         </section>
 
         <section id="about" className="mb-16">
-          <About fullBio={person.fullBio} />
+          <About person={person} />
         </section>
 
         <section id="skills" className="mb-16">

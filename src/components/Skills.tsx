@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next'
+import { getLocalizedArray } from '../i18n/utils'
+
 // Props para Skills
 interface SkillsProps {
   skills: {
@@ -5,10 +8,13 @@ interface SkillsProps {
     frontend: string[]
     backend: string[]
     dataScience: string[]
+    dataScience_en?: string[]
     basesDeDatos: string[]
     herramientas: string[]
     fundamentos: string[]
+    fundamentos_en?: string[]
     softSkills: string[]
+    softSkills_en?: string[]
     ciCd: string[]
     idiomas: {
       espanol: { level: string }
@@ -18,55 +24,51 @@ interface SkillsProps {
 }
 
 function Skills({ skills }: SkillsProps) {
-  const { 
-    frontend, 
-    backend, 
-    lenguajes, 
-    herramientas, 
-    fundamentos, 
-    softSkills,
-    basesDeDatos,
-    dataScience,
-    ciCd
-  } = skills
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language
   
-  // Agrupar skills por categoría - usar ?? (nullish coalescing) en vez de ||
+  // Helper to get localized array for a category
+  const getSkillsArray = (category: string): string[] => {
+    return getLocalizedArray(skills, category, currentLang)
+  }
+  
+  // Agrupar skills por categoría - usar nullish coalescing
   const skillGroups = [
     {
-      title: 'Frontend',
-      skills: frontend ?? []
+      key: 'frontend',
+      skills: getSkillsArray('frontend')
     },
     {
-      title: 'Backend',
-      skills: backend ?? []
+      key: 'backend',
+      skills: getSkillsArray('backend')
     },
     {
-      title: 'Lenguajes',
-      skills: lenguajes ?? []
+      key: 'lenguajes',
+      skills: getSkillsArray('lenguajes')
     },
     {
-      title: 'Data Science',
-      skills: dataScience ?? []
+      key: 'dataScience',
+      skills: getSkillsArray('dataScience')
     },
     {
-      title: 'Bases de datos',
-      skills: basesDeDatos ?? []
+      key: 'basesDeDatos',
+      skills: getSkillsArray('basesDeDatos')
     },
     {
-      title: 'Herramientas',
-      skills: herramientas ?? []
+      key: 'herramientas',
+      skills: getSkillsArray('herramientas')
     },
     {
-      title: 'DevOps/CI-CD',
-      skills: ciCd ?? []
+      key: 'ciCd',
+      skills: getSkillsArray('ciCd')
     },
     {
-      title: 'Fundamentos',
-      skills: fundamentos ?? []
+      key: 'fundamentos',
+      skills: getSkillsArray('fundamentos')
     },
     {
-      title: 'Soft Skills',
-      skills: softSkills ?? []
+      key: 'softSkills',
+      skills: getSkillsArray('softSkills')
     }
   ].filter(group => group.skills.length > 0)
 
@@ -78,20 +80,20 @@ function Skills({ skills }: SkillsProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            Stack
+            {t('skills.title')}
           </h2>
           <p className="text-gray-400 text-lg">
-            Tecnologías y conceptos que utilizo en mis proyectos
+            {t('skills.subtitle')}
           </p>
           <div className="mt-4 flex justify-center gap-2">
             <span className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm">
-              Frontend Development
+              {t('skills.tags.frontendDevelopment')}
             </span>
              <span className="px-3 py-1 bg-green-500/20 text-green-300 rounded-full text-sm">
-              Backend Development
+              {t('skills.tags.backendDevelopment')}
             </span>
             <span className="px-3 py-1 bg-yellow-500/20 text-yellow-300 rounded-full text-sm">
-              DevOps & CI/CD
+              {t('skills.tags.devOpsCiCd')}
             </span>
           </div>
         </div>
@@ -99,7 +101,7 @@ function Skills({ skills }: SkillsProps) {
         <div className="grid md:grid-cols-3 gap-6">
           {skillGroups.map((group) => (
             <div
-              key={`group-${group.title}-${group.skills[0]?.toLowerCase()}`} // Clave única basada en título y primer skill
+              key={`group-${group.key}-${group.skills[0]?.toLowerCase()}`} // Clave única basada en key y primer skill
               className="card backdrop-blur-sm hover:scale-110 transition-transform duration-300"
             >
               <div className="flex items-center mb-4">
@@ -109,13 +111,13 @@ function Skills({ skills }: SkillsProps) {
                   </svg>
                 </div>
                 <h3 className="text-xl font-bold text-white">
-                  {group.title}
+                  {t(`skills.categories.${group.key}`)}
                 </h3>
               </div>
               <div className="space-y-3">
                 {group.skills.map((skill, skillIndex) => (
                   <div
-                    key={`${group.title}-${skill}-${skillIndex}`} // Usar clave única
+                    key={`${group.key}-${skill}-${skillIndex}`} // Usar clave única
                     className="flex items-center"
                   >
                     <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3 flex-shrink-0"></span>

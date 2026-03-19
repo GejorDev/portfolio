@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About me",
+    "stack": "Stack",
+    "projects": "Projects",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "toggleToEnglish": "Switch to English",
+    "toggleToSpanish": "Switch to Spanish"
+  },
+  "hero": {
+    "greeting": "Hello, I'm {{name}}",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "about": {
+    "title": "About me",
+    "intro": "I'm <strong>{{name}}</strong>, information technology professional, with experience in developing innovative digital solutions.",
+    "fallbackBio": "Specialized in creating modern and scalable web architectures, with a focus on UX/UI and agile methodologies."
+  },
+  "skills": {
+    "title": "Stack",
+    "subtitle": "Technologies and concepts I use in my projects",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "lenguajes": "Languages",
+      "dataScience": "Data Science",
+      "basesDeDatos": "Databases",
+      "herramientas": "Tools",
+      "ciCd": "DevOps/CI-CD",
+      "fundamentos": "Fundamentals",
+      "softSkills": "Soft Skills"
+    },
+    "tags": {
+      "frontendDevelopment": "Frontend Development",
+      "backendDevelopment": "Backend Development",
+      "devOpsCiCd": "DevOps & CI/CD"
+    }
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "viewProject": "View project",
+    "viewDetails": "View details",
+    "items": {
+      "ecommerce": {
+        "title": "E-commerce Dashboard",
+        "description": "E-commerce platform with full shopping cart, Stripe payment gateway integration, and admin dashboard with real-time graphs."
+      },
+      "analytics": {
+        "title": "Analytics Dashboard",
+        "description": "Professional analytics dashboard for data visualization and business metrics with multiple data source integration and PDF export."
+      },
+      "portfolio": {
+        "title": "Personal Portfolio",
+        "description": "Responsive web portfolio built with React 19 and Tailwind CSS. Example of modern frontend development best practices."
+      }
+    }
+  },
+  "footer": {
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "phone": "Phone",
+    "designedBy": "Designed and developed by <span class=\"text-blue-500\">{{name}}</span>",
+    "builtWith": "Built with React 19 + Tailwind CSS + TypeScript",
+    "copyright": "© {{year}} All rights reserved.",
+    "githubLabel": "Go to GitHub repository",
+    "sourceCode": "View source code on GitHub"
+  },
+  "common": {
+    "siteName": "GejorDev"
+  }
+}

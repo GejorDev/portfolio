@@ -1,0 +1,19 @@
+{
+  "name": "GejorDev",
+  "title": "Full Stack Developer",
+  "url": "https://gejordev.com",
+  "author": "Jorge Diego Alonso",
+  "description": {
+    "es": "Portfolio de GejorDev, desarrollador Full Stack especializado en TypeScript, React, Next.js y FastAPI. Proyectos y experiencia en desarrollo web.",
+    "en": "Portfolio of GejorDev, Full Stack Developer specialized in TypeScript, React, Next.js and FastAPI. Projects and experience in web development."
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/in/gejordev",
+    "github": "https://github.com/gejordev"
+  },
+  "tech": {
+    "frontend": ["React", "TypeScript", "Next.js", "Tailwind CSS"],
+    "backend": ["FastAPI", "Node.js", "Python"],
+    "database": ["PostgreSQL", "MongoDB", "Redis"]
+  }
+}

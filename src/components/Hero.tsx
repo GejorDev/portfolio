@@ -1,3 +1,6 @@
+import { useTranslation } from 'react-i18next'
+import { getLocalizedField } from '../i18n/utils'
+
 // Props para el Hero
 interface HeroProps {
   person: {
@@ -7,11 +10,16 @@ interface HeroProps {
     email: string
     phone: string
     tagline?: string
+    tagline_en?: string
+    fullBio_en?: string
   }
 }
 
 function Hero({ person }: HeroProps) {
+  const { t, i18n } = useTranslation()
   const { brandName, linkedIn, email, phone } = person
+  const currentLang = i18n.language
+  const tagline = getLocalizedField(person, 'tagline', currentLang)
 
   // Funciones auxiliares fuera de render para evitar crear referencias nuevas
   const linkedinIcon = (
@@ -33,9 +41,9 @@ function Hero({ person }: HeroProps) {
   )
 
   const contactLinks = [
-    { type: 'linkedin', label: 'LinkedIn', key: 'linkedin', icon: linkedinIcon, href: linkedIn, target: '_blank', rel: 'noopener noreferrer' } as const,
-    { type: 'email', label: 'Email', key: 'email', icon: emailIcon, href: `mailto:${email}`, target: '_self', rel: 'noopener noreferrer' } as const,
-    { type: 'phone', label: 'Teléfono', key: 'phone', icon: phoneIcon, href: `tel:+34${phone}`, target: '_self', rel: 'noopener noreferrer' } as const
+    { type: 'linkedin', label: t('hero.linkedin'), key: 'linkedin', icon: linkedinIcon, href: linkedIn, target: '_blank', rel: 'noopener noreferrer' } as const,
+    { type: 'email', label: t('hero.email'), key: 'email', icon: emailIcon, href: `mailto:${email}`, target: '_self', rel: 'noopener noreferrer' } as const,
+    { type: 'phone', label: t('hero.phone'), key: 'phone', icon: phoneIcon, href: `tel:${phone}`, target: '_self', rel: 'noopener noreferrer' } as const
   ]
 
   return (
@@ -46,11 +54,11 @@ function Hero({ person }: HeroProps) {
       
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
-          Hola, soy <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{brandName}</span>
+          {t('hero.greeting', { name: brandName })}
         </h1>
         
         <p className="text-xl md:text-2xl text-white mb-10 leading-relaxed">
-          {person.tagline}
+          {tagline}
         </p>
         
         <div className="flex flex-wrap justify-center gap-4">
@@ -60,7 +68,7 @@ function Hero({ person }: HeroProps) {
               href={contact.href}
               target={contact.target}
               rel={contact.rel}
-              className="btn-primary bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center"
+              className="btn-primary bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
             >
               {contact.icon}
               <span>{contact.label}</span>

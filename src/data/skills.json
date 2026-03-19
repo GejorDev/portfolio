@@ -28,6 +28,15 @@
     "Machine Learning",
     "ETL"
   ],
+  "dataScience_en": [
+    "Pandas",
+    "NumPy",
+    "Matplotlib",
+    "Scikit-learn",
+    "Data analysis and visualization",
+    "Machine Learning",
+    "ETL"
+  ],
   "basesDeDatos": [
     "PostgreSQL",
     "MongoDB",
@@ -47,10 +56,20 @@
     "Patrones de diseño",
     "Metodologías ágiles"
   ],
+  "fundamentos_en": [
+    "Object-oriented programming",
+    "Design patterns",
+    "Agile methodologies"
+  ],
   "softSkills": [
     "Trabajo en equipo",
     "Resolución de problemas",
     "Capacidad de aprendizaje"
+  ],
+  "softSkills_en": [
+    "Teamwork",
+    "Problem solving",
+    "Learning ability"
   ],
   "idiomas": {
     "espanol": {

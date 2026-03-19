@@ -1,18 +1,28 @@
+import { useTranslation, Trans } from 'react-i18next'
+import { getLocalizedField } from '../i18n/utils'
+
 // Props para el About
 interface AboutProps {
-  fullBio?: string
+  person: {
+    name: string
+    fullBio?: string
+    fullBio_en?: string
+  }
 }
 
-function About({ fullBio }: AboutProps) {
+function About({ person }: AboutProps) {
+  const { t, i18n } = useTranslation()
+  const currentLang = i18n.language
+  const fullBio = getLocalizedField(person, 'fullBio', currentLang)
+  
   return (
     <section className="py-8">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-6">Sobre mí</h2>
+        <h2 className="text-3xl font-bold text-white mb-6">{t('about.title')}</h2>
         
         <div className="bg-gray-800 rounded-xl p-8 border border-gray-700">
           <p className="text-gray-300 mb-6 leading-relaxed">
-            Soy <strong className="text-blue-500">Jorge Diego Alonso</strong>, profesional de las tecnologías de la información, 
-            con experiencia en el desarrollo de soluciones digitales innovadoras.
+            <Trans i18nKey="about.intro" values={{ name: person.name }} components={{ strong: <strong className="text-blue-500" /> }} />
           </p>
           
           {fullBio && (
@@ -29,7 +39,7 @@ function About({ fullBio }: AboutProps) {
           {!fullBio && (
             <div className="mt-6">
               <p className="text-gray-300 leading-relaxed">
-                Especializado en la creación de arquitecturas web modernas y escalables, con enfoque en UX/UI y metodologías ágiles.
+                {t('about.fallbackBio')}
               </p>
             </div>
           )}

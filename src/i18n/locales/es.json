@@ -1,0 +1,75 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "stack": "Stack",
+    "projects": "Proyectos",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "toggleToEnglish": "Cambiar a inglés",
+    "toggleToSpanish": "Cambiar a español"
+  },
+  "hero": {
+    "greeting": "Hola, soy {{name}}",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "phone": "Teléfono"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "intro": "Soy <strong>{{name}}</strong>, profesional de las tecnologías de la información, con experiencia en el desarrollo de soluciones digitales innovadoras.",
+    "fallbackBio": "Especializado en la creación de arquitecturas web modernas y escalables, con enfoque en UX/UI y metodologías ágiles."
+  },
+  "skills": {
+    "title": "Stack",
+    "subtitle": "Tecnologías y conceptos que utilizo en mis proyectos",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "lenguajes": "Lenguajes",
+      "dataScience": "Data Science",
+      "basesDeDatos": "Bases de datos",
+      "herramientas": "Herramientas",
+      "ciCd": "DevOps/CI-CD",
+      "fundamentos": "Fundamentos",
+      "softSkills": "Soft Skills"
+    },
+    "tags": {
+      "frontendDevelopment": "Frontend Development",
+      "backendDevelopment": "Backend Development",
+      "devOpsCiCd": "DevOps & CI/CD"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+    "viewProject": "Ver proyecto",
+    "viewDetails": "Ver detalle",
+    "items": {
+      "ecommerce": {
+        "title": "E-commerce Dashboard",
+        "description": "Plataforma de comercio electrónico con carrito de compras completo, integración con pasarelas de pago Stripe, y panel de administración con gráficos en tiempo real."
+      },
+      "analytics": {
+        "title": "Dashboard Analítico",
+        "description": "Dashboard analítico profesional para visualización de datos y métricas de negocio con integración de múltiples fuentes de datos y exportación a PDF."
+      },
+      "portfolio": {
+        "title": "Portfolio Personal",
+        "description": "Portfolio web responsivo construido con React 19 y Tailwind CSS. Ejemplo de buenas prácticas de desarrollo frontend moderno."
+      }
+    }
+  },
+  "footer": {
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "phone": "Teléfono",
+    "designedBy": "Diseñado y desarrollado por <span class=\"text-blue-500\">{{name}}</span>",
+    "builtWith": "Construido con React 19 + Tailwind CSS + TypeScript",
+    "copyright": "© {{year}} Todos los derechos reservados.",
+    "githubLabel": "Ir al repositorio GitHub",
+    "sourceCode": "Ver código fuente en GitHub"
+  },
+  "common": {
+    "siteName": "GejorDev"
+  }
+}

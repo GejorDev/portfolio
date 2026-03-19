@@ -1,7 +1,14 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { LanguageToggle } from './ui'
 
 function Header() {
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState<boolean>(false)
+
+  const closeMobileMenu = () => {
+    setIsOpen(false)
+  }
 
   return (
     <header className="bg-gray-800 border-b border-gray-700 shadow-sm sticky top-0 z-50">
@@ -10,7 +17,7 @@ function Header() {
           {/* Logo */}
           <div className="text-2xl font-bold text-blue-500">
             <a href="#" className="flex items-center gap-2">
-              GejorDev
+              {t('common.siteName')}
             </a>
           </div>
 
@@ -18,26 +25,30 @@ function Header() {
           <div className="hidden md:flex items-center space-x-6">
             <a
               href="#hero"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
             >
-              Inicio
+              {t('nav.home')}
             </a>
             <a
               href="#about"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
             >
-              Sobre mí
+              {t('nav.about')}
             </a>
             <a
               href="#stack"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
             >
-              Stack
+              {t('nav.stack')}
             </a>
+            {/* Language toggle button */}
+            <LanguageToggle />
           </div>
 
           {/* Botón hamburguesa y menú móvil */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Mobile language toggle */}
+            <LanguageToggle variant="mobile" onToggle={closeMobileMenu} />
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="
@@ -47,8 +58,9 @@ function Header() {
                     w-12 h-12 flex items-center justify-center
                     active:scale-95 shadow-lg
                     hover:shadow-xl
+                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800
                 "
-                aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+                aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
                 style={{
                     touchAction: 'manipation',
                 }}
@@ -97,24 +109,24 @@ function Header() {
             <nav className="flex flex-col space-y-4">
               <a
                 href="#hero"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
                 onClick={() => setIsOpen(false)}
               >
-                Inicio
+                {t('nav.home')}
               </a>
               <a
                 href="#about"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
                 onClick={() => setIsOpen(false)}
               >
-                Sobre mí
+                {t('nav.about')}
               </a>
               <a
                 href="#stack"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
                 onClick={() => setIsOpen(false)}
               >
-                Stack
+                {t('nav.stack')}
               </a>
             </nav>
           </div>
