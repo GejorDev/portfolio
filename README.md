@@ -1,16 +1,47 @@
-# React + Vite
+# Frontend Development Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+  <p><em>My React portfolio web application, built with Vite for optimal performance.</em></p>
+  <p><strong>SPA (Single Page Application) optimized for showcasing professional projects</strong></p>
+</div>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Technologies Used
 
-## React Compiler
+<div align="center">
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- ⚛️ **React 19** - Latest stable version with all the newest enhancements
+- 🚀 **Vite** - Lightning-fast development server and optimized build tools
+- 🔧 **TypeScript** - Strict typing to ensure code quality and maintain integrity
+- 🎨 **ESLint + Prettier** - Professional linting and code formatting configuration
+- ⚡ **HMR (Hot Module Replacement)** - Instant code change reload during development
 
-## Expanding the ESLint configuration
+</div>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🌐 Live Demo
+
+<div align="center">
+
+| **Deploy** |
+|:----------:|
+| [`🚀 https://your-domain.vercel.app`](https://your-domain.vercel.app) |
+</div>
+
+> 🛣️ *Coming soon - update when deployment is ready!*
+
+---
+
+## 🛠️ Local Development & AI Integration
+
+<div align="center">
+
+**🤖 Testing Opencode with Ollama**
+
+- Experiencing with AI in local environment
+- Learning and experimenting with LLMs
+- Building a production-ready portfolio
+
+</div>
