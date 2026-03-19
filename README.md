@@ -79,10 +79,6 @@ src/
 | `npm test` | Run unit tests |
 | `npm run test:ui` | Run tests with UI |
 
-## 📝 License
-
-MIT
-
 ---
 
 Built with ⚛️ by [GejorDev](https://gejordev.com)
