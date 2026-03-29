@@ -19,6 +19,7 @@ Portfolio profesional de desarrollador Full Stack.
 - **Responsive Design** - Mobile-first approach
 - **Accessibility** - Focus states and ARIA labels
 - **Dark Theme** - Modern dark UI
+- **Projects Section** - Showcase with empty state ready for future projects
 
 ## 🛠️ Tech Stack
 
@@ -56,17 +57,13 @@ npm run build
 
 ```
 src/
-├── components/     # React components
-│   ├── ui/        # Reusable UI components
-│   └── *.tsx      # Page sections
-├── hooks/         # Custom React hooks
-├── i18n/         # Internationalization
-│   └── locales/  # Translation files
-├── config/       # Site configuration
-├── constants/    # Site constants
-├── types/         # TypeScript types
-├── utils/         # Utility functions
-└── data/         # Static data (person, skills)
+├── components/     # React components (Header, Hero, About, Skills, Projects, Footer)
+│   └── ui/        # Reusable UI components
+├── data/          # Static data (person, skills, projects)
+├── i18n/          # Internationalization
+│   └── locales/   # Translation files (es, en)
+├── styles/        # Global styles
+└── test/          # Test setup
 ```
 
 ## 🔧 Available Scripts
