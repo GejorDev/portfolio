@@ -9,7 +9,7 @@ Portfolio profesional de desarrollador Full Stack.
 
 ## 🌐 Demo
 
-[gejordev.com](https://gejordev.com)
+[gejordev](https://gejordev-portfolio.vercel.app/)
 
 ## ✨ Features
 
