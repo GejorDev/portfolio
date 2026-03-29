@@ -3,9 +3,11 @@ import Hero from './components/Hero'
 import Header from './components/Header'
 import About from './components/About'
 import Skills from './components/Skills'
+import Projects from './components/Projects'
 import Footer from './components/Footer'
 import personRaw from './data/person.json'
 import skills from './data/skills.json'
+import projects from './data/projects.json'
 import { useTranslation } from 'react-i18next'
 import { getLocalizedPerson } from './i18n/utils'
 
@@ -33,6 +35,10 @@ function App() {
 
         <section id="skills" className="mb-16">
           <Skills skills={skills} />
+        </section>
+
+        <section id="projects" className="mb-16">
+          <Projects projects={projects.projects} />
         </section>
       
       </main>

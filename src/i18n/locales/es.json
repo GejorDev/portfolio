@@ -44,6 +44,10 @@
     "title": "Proyectos Destacados",
     "viewProject": "Ver proyecto",
     "viewDetails": "Ver detalle",
+    "empty": {
+      "title": "Próximamente",
+      "description": "Estoy trabajando en nuevos proyectos. ¡Vuelve pronto!"
+    },
     "items": {
       "ecommerce": {
         "title": "E-commerce Dashboard",

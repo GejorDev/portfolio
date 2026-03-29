@@ -44,6 +44,10 @@
     "title": "Featured Projects",
     "viewProject": "View project",
     "viewDetails": "View details",
+    "empty": {
+      "title": "Coming Soon",
+      "description": "I'm working on new projects. Check back soon!"
+    },
     "items": {
       "ecommerce": {
         "title": "E-commerce Dashboard",

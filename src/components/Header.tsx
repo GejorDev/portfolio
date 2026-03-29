@@ -41,6 +41,12 @@ function Header() {
             >
               {t('nav.stack')}
             </a>
+            <a
+              href="#projects"
+              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
+            >
+              {t('nav.projects')}
+            </a>
             {/* Language toggle button */}
             <LanguageToggle />
           </div>
@@ -127,6 +133,13 @@ function Header() {
                 onClick={() => setIsOpen(false)}
               >
                 {t('nav.stack')}
+              </a>
+              <a
+                href="#projects"
+                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
+                onClick={() => setIsOpen(false)}
+              >
+                {t('nav.projects')}
               </a>
             </nav>
           </div>

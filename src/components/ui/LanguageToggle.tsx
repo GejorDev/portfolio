@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { LANGUAGES } from '../../constants'
+
+type Language = 'es' | 'en'
 
 interface LanguageToggleProps {
   variant?: 'default' | 'mobile'
@@ -11,7 +12,7 @@ export function LanguageToggle({ variant = 'default', className = '', onToggle }
   const { t, i18n } = useTranslation()
   
   const toggleLanguage = () => {
-    const newLang = i18n.language === LANGUAGES.ES ? LANGUAGES.EN : LANGUAGES.ES
+    const newLang: Language = i18n.language === 'es' ? 'en' : 'es'
     i18n.changeLanguage(newLang)
     onToggle?.()
   }
@@ -29,7 +30,7 @@ export function LanguageToggle({ variant = 'default', className = '', onToggle }
       <button
         onClick={toggleLanguage}
         className={`${baseClasses} ${className}`}
-        aria-label={i18n.language === LANGUAGES.ES ? t('nav.toggleToEnglish') : t('nav.toggleToSpanish')}
+        aria-label={i18n.language === 'es' ? t('nav.toggleToEnglish') : t('nav.toggleToSpanish')}
       >
         {i18n.language.toUpperCase()}
       </button>
@@ -40,7 +41,7 @@ export function LanguageToggle({ variant = 'default', className = '', onToggle }
     <button
       onClick={toggleLanguage}
       className={`${baseClasses} ${className}`}
-      aria-label={i18n.language === LANGUAGES.ES ? t('nav.toggleToEnglish') : t('nav.toggleToSpanish')}
+      aria-label={i18n.language === 'es' ? t('nav.toggleToEnglish') : t('nav.toggleToSpanish')}
     >
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
