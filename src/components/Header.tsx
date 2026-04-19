@@ -1,14 +1,49 @@
-import { useState } from 'react'
+import { useState, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { LanguageToggle } from './ui'
+
+type NavItem = {
+  href: string
+  labelKey: string
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { href: '#hero', labelKey: 'nav.home' },
+  { href: '#about', labelKey: 'nav.about' },
+  { href: '#stack', labelKey: 'nav.stack' },
+  { href: '#projects', labelKey: 'nav.projects' },
+]
+
+const LINK_CLASSES = "text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
 
 function Header() {
   const { t } = useTranslation()
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     setIsOpen(false)
-  }
+  }, [])
+
+  const toggleMenu = useCallback(() => {
+    setIsOpen(prev => !prev)
+  }, [])
+
+  const desktopLinks = useMemo(() => NAV_ITEMS.map((item) => (
+    <a key={item.href} href={item.href} className={LINK_CLASSES}>
+      {t(item.labelKey)}
+    </a>
+  )), [t])
+
+  const mobileLinks = useMemo(() => NAV_ITEMS.map((item) => (
+    <a 
+      key={item.href} 
+      href={item.href} 
+      className={LINK_CLASSES}
+      onClick={closeMobileMenu}
+    >
+      {t(item.labelKey)}
+    </a>
+  )), [t, closeMobileMenu])
 
   return (
     <header className="bg-gray-800 border-b border-gray-700 shadow-sm sticky top-0 z-50">
@@ -23,30 +58,7 @@ function Header() {
 
           {/* Links de escritorio */}
           <div className="hidden md:flex items-center space-x-6">
-            <a
-              href="#hero"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-            >
-              {t('nav.home')}
-            </a>
-            <a
-              href="#about"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-            >
-              {t('nav.about')}
-            </a>
-            <a
-              href="#stack"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-            >
-              {t('nav.stack')}
-            </a>
-            <a
-              href="#projects"
-              className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-            >
-              {t('nav.projects')}
-            </a>
+            {desktopLinks}
             {/* Language toggle button */}
             <LanguageToggle />
           </div>
@@ -56,7 +68,7 @@ function Header() {
             {/* Mobile language toggle */}
             <LanguageToggle variant="mobile" onToggle={closeMobileMenu} />
             <button
-                onClick={() => setIsOpen(!isOpen)}
+                onClick={toggleMenu}
                 className="
                     text-gray-300 hover:text-white 
                     p-4 rounded-xl hover:bg-gray-700/50 
@@ -68,7 +80,7 @@ function Header() {
                 "
                 aria-label={isOpen ? t('nav.closeMenu') : t('nav.openMenu')}
                 style={{
-                    touchAction: 'manipation',
+                    touchAction: 'manipulation',
                 }}
             >
                 <span className={isOpen ? 'animate-out' : 'animate-in'}>
@@ -113,34 +125,7 @@ function Header() {
         {isOpen && (
           <div className="md:hidden absolute top-16 left-0 w-full bg-gray-800 border-b border-gray-700 p-4">
             <nav className="flex flex-col space-y-4">
-              <a
-                href="#hero"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-                onClick={() => setIsOpen(false)}
-              >
-                {t('nav.home')}
-              </a>
-              <a
-                href="#about"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-                onClick={() => setIsOpen(false)}
-              >
-                {t('nav.about')}
-              </a>
-              <a
-                href="#stack"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-                onClick={() => setIsOpen(false)}
-              >
-                {t('nav.stack')}
-              </a>
-              <a
-                href="#projects"
-                className="text-gray-300 hover:text-white text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800 rounded px-2 py-1"
-                onClick={() => setIsOpen(false)}
-              >
-                {t('nav.projects')}
-              </a>
+              {mobileLinks}
             </nav>
           </div>
         )}

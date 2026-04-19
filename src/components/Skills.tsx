@@ -1,5 +1,7 @@
+import { useMemo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 import { getLocalizedArray } from '../i18n/utils'
+import { Language } from '../types'
 
 // Props para Skills
 interface SkillsProps {
@@ -25,15 +27,15 @@ interface SkillsProps {
 
 function Skills({ skills }: SkillsProps) {
   const { t, i18n } = useTranslation()
-  const currentLang = i18n.language
+  const currentLang = i18n.language as Language
   
   // Helper to get localized array for a category
-  const getSkillsArray = (category: string): string[] => {
+  const getSkillsArray = useCallback((category: string): string[] => {
     return getLocalizedArray(skills, category, currentLang)
-  }
+  }, [skills, currentLang])
   
   // Agrupar skills por categoría - usar nullish coalescing
-  const skillGroups = [
+  const skillGroups = useMemo(() => [
     {
       key: 'frontend',
       skills: getSkillsArray('frontend')
@@ -70,7 +72,7 @@ function Skills({ skills }: SkillsProps) {
       key: 'softSkills',
       skills: getSkillsArray('softSkills')
     }
-  ].filter(group => group.skills.length > 0)
+  ].filter(group => group.skills.length > 0), [getSkillsArray])
 
   return (
     <section id="stack" className="py-20 bg-gray-800/50 relative overflow-hidden">

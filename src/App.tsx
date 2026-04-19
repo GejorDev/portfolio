@@ -10,11 +10,12 @@ import skills from './data/skills.json'
 import projects from './data/projects.json'
 import { useTranslation } from 'react-i18next'
 import { getLocalizedPerson } from './i18n/utils'
+import { Language } from './types'
 
 
 function App() {
   const { i18n } = useTranslation()
-  const person = getLocalizedPerson(personRaw, i18n.language)
+  const person = getLocalizedPerson(personRaw, i18n.language as Language)
 
   // Update HTML lang attribute when language changes
   useEffect(() => {

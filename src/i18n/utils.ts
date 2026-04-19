@@ -1,3 +1,7 @@
+import { Language, Person } from '../types'
+
+type LocalizedRecord = Record<string, string | undefined>
+
 /**
  * Helper to get language-specific field from data object.
  * Assumes fields are suffixed with '_es' or '_en' (e.g., tagline_es, tagline_en).
@@ -9,13 +13,13 @@
  * @returns localized string
  */
 export function getLocalizedField(
-  obj: Record<string, any>,
+  obj: LocalizedRecord,
   field: string,
-  lang: string
+  lang: Language
 ): string {
   const localizedField = `${field}_${lang}`;
   if (obj[localizedField] !== undefined) {
-    return obj[localizedField];
+    return obj[localizedField] || '';
   }
   // Fallback to unsuffixed field (assumed Spanish)
   return obj[field] || '';
@@ -29,12 +33,13 @@ export function getLocalizedField(
  * @param lang - language code ('es' or 'en')
  * @returns person object with tagline, fullBio, location replaced by localized versions
  */
-export function getLocalizedPerson(personData: any, lang: string): any {
+export function getLocalizedPerson(personData: Person, lang: Language): Person {
+  const record = personData as unknown as LocalizedRecord;
   return {
     ...personData,
-    tagline: getLocalizedField(personData, 'tagline', lang),
-    fullBio: getLocalizedField(personData, 'fullBio', lang),
-    location: getLocalizedField(personData, 'location', lang),
+    tagline: getLocalizedField(record, 'tagline', lang),
+    fullBio: getLocalizedField(record, 'fullBio', lang),
+    location: getLocalizedField(record, 'location', lang),
   };
 }
 
@@ -49,14 +54,14 @@ export function getLocalizedPerson(personData: any, lang: string): any {
  * @returns localized array
  */
 export function getLocalizedArray(
-  obj: Record<string, any>,
+  obj: Record<string, unknown>,
   field: string,
-  lang: string
-): any[] {
+  lang: Language
+): string[] {
   const localizedField = `${field}_${lang}`;
   if (Array.isArray(obj[localizedField])) {
-    return obj[localizedField];
+    return obj[localizedField] as string[];
   }
   // Fallback to unsuffixed array (assumed Spanish)
-  return Array.isArray(obj[field]) ? obj[field] : [];
+  return Array.isArray(obj[field]) ? (obj[field] as string[]) : [];
 }

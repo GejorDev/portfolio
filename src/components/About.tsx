@@ -1,5 +1,6 @@
 import { useTranslation, Trans } from 'react-i18next'
 import { getLocalizedField } from '../i18n/utils'
+import { Language } from '../types'
 
 // Props para el About
 interface AboutProps {
@@ -12,7 +13,7 @@ interface AboutProps {
 
 function About({ person }: AboutProps) {
   const { t, i18n } = useTranslation()
-  const currentLang = i18n.language
+  const currentLang = i18n.language as Language
   const fullBio = getLocalizedField(person, 'fullBio', currentLang)
   
   return (
