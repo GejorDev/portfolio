@@ -15,12 +15,12 @@ import { Language } from './types'
 
 function App() {
   const { i18n } = useTranslation()
-  const person = getLocalizedPerson(personRaw, i18n.language as Language)
+  const lang = (i18n.language ?? 'es').split('-')[0] as Language
+  const person = getLocalizedPerson(personRaw, lang)
 
-  // Update HTML lang attribute when language changes
   useEffect(() => {
-    document.documentElement.lang = i18n.language
-  }, [i18n.language])
+    document.documentElement.lang = lang
+  }, [lang])
 
   return (
     <div className="min-h-screen bg-gray-900">

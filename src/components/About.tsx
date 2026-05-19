@@ -13,7 +13,7 @@ interface AboutProps {
 
 function About({ person }: AboutProps) {
   const { t, i18n } = useTranslation()
-  const currentLang = i18n.language as Language
+  const currentLang = (i18n.language ?? 'es').split('-')[0] as Language
   const fullBio = getLocalizedField(person, 'fullBio', currentLang)
   
   return (

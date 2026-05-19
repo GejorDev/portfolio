@@ -27,7 +27,7 @@ interface SkillsProps {
 
 function Skills({ skills }: SkillsProps) {
   const { t, i18n } = useTranslation()
-  const currentLang = i18n.language as Language
+  const currentLang = (i18n.language ?? 'es').split('-')[0] as Language
   
   // Helper to get localized array for a category
   const getSkillsArray = useCallback((category: string): string[] => {

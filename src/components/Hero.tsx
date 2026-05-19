@@ -20,7 +20,7 @@ interface HeroProps {
 function Hero({ person }: HeroProps) {
   const { t, i18n } = useTranslation()
   const { brandName, linkedIn, email, phone } = person
-  const currentLang = i18n.language as Language
+  const currentLang = (i18n.language ?? 'es').split('-')[0] as Language
   const tagline = getLocalizedField(person, 'tagline', currentLang)
 
   const contactLinks = useMemo(() => {
