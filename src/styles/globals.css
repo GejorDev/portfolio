@@ -1,0 +1,409 @@
+@import "tailwindcss";
+@import "./palettes/emerald.css";
+
+@theme {
+  --color-dark: #0a0a0a;
+  --color-dark-50: #f5f5f5;
+  --color-dark-100: #e0e0e0;
+  --color-dark-200: #a0a0a0;
+  --color-dark-300: #7a7a7a;
+  --color-dark-400: #555555;
+  --color-dark-500: #333333;
+  --color-dark-600: #27272a;
+  --color-dark-700: #1a1a1a;
+  --color-dark-800: #0f0f0f;
+  --color-dark-900: #0a0a0a;
+
+  --color-gold: #d4a574;
+  --color-gold-50: #fdf6ef;
+  --color-gold-100: #f9e8d4;
+  --color-gold-200: #f2d0a8;
+  --color-gold-300: #e8b87c;
+  --color-gold-400: #d4a574;
+  --color-gold-500: #c08a5a;
+  --color-gold-600: #a06e42;
+  --color-gold-700: #7d5534;
+  --color-gold-800: #5e3f28;
+  --color-gold-900: #3f2a1c;
+
+  --color-silver: #a8a8a8;
+  --color-silver-50: #f7f7f7;
+  --color-silver-100: #e3e3e3;
+  --color-silver-200: #c8c8c8;
+  --color-silver-300: #a8a8a8;
+  --color-silver-400: #8a8a8a;
+  --color-silver-500: #6e6e6e;
+  --color-silver-600: #535353;
+  --color-silver-700: #3a3a3a;
+  --color-silver-800: #242424;
+  --color-silver-900: #121212;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-heading: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Dark elegant base */
+body {
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Only hover on pointer-precise devices */
+@media (hover: hover) and (pointer: fine) {
+  .gold-hover:hover {
+    color: var(--color-gold, #d4a574);
+    transition: color 0.2s ease;
+  }
+}
+
+/* Visible focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--color-gold-400, #d4a574);
+  outline-offset: 2px;
+}
+
+/* No focus ring on pointer/mouse click (not keyboard) */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ========== Glassmorphism ========== */
+.glass {
+  background: color-mix(in oklab, var(--color-dark) 50%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--color-dark-50) 8%, transparent);
+}
+
+.glass-hover {
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .glass-hover:hover {
+    background: color-mix(in oklab, var(--color-dark) 40%, transparent);
+    border-color: color-mix(in oklab, var(--color-gold) 30%, transparent);
+    box-shadow: 0 4px 24px color-mix(in oklab, var(--color-gold) 6%, transparent);
+  }
+}
+
+/* ========== Animations ========== */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fade-in-up 0.6s ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fade-in 0.5s ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+.animate-scale-in {
+  opacity: 0;
+  animation: scale-in 0.4s ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+/* Scroll reveal — hidden until IntersectionObserver adds .revealed */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children inside a revealed container */
+[data-reveal].revealed [data-stagger] {
+  opacity: 0;
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+[data-reveal].revealed [data-stagger]:nth-child(1) { animation-delay: 0ms; }
+[data-reveal].revealed [data-stagger]:nth-child(2) { animation-delay: 80ms; }
+[data-reveal].revealed [data-stagger]:nth-child(3) { animation-delay: 160ms; }
+[data-reveal].revealed [data-stagger]:nth-child(4) { animation-delay: 240ms; }
+[data-reveal].revealed [data-stagger]:nth-child(5) { animation-delay: 320ms; }
+[data-reveal].revealed [data-stagger]:nth-child(6) { animation-delay: 400ms; }
+[data-reveal].revealed [data-stagger]:nth-child(7) { animation-delay: 480ms; }
+[data-reveal].revealed [data-stagger]:nth-child(8) { animation-delay: 560ms; }
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-lift:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold-400, #d4a574);
+    box-shadow: 0 8px 30px color-mix(in oklab, var(--color-gold) 8%, transparent);
+  }
+
+  .btn-scale:hover {
+    transform: scale(1.05);
+  }
+}
+
+.btn-scale {
+  transition: transform 0.2s ease;
+}
+
+/* ========== Hero ========== */
+.hero-glow {
+  position: relative;
+}
+
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(3%, -2%); }
+  50% { transform: translate(-2%, 3%); }
+  75% { transform: translate(2%, -1%); }
+}
+
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  inset: -40% -20%;
+  background: radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--color-gold) 7%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+  animation: glow-drift 20s ease-in-out infinite;
+}
+
+@media (min-width: 80rem) {
+  .hero-glow::before {
+    inset: -60% -30%;
+    background: radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--color-gold) 8%, transparent) 0%, transparent 55%);
+  }
+}
+
+@media (min-width: 96rem) {
+  .hero-glow::before {
+    inset: -80% -40%;
+    background: radial-gradient(ellipse at 50% 30%, color-mix(in oklab, var(--color-gold) 10%, transparent) 0%, transparent 50%);
+    animation-duration: 30s;
+  }
+}
+
+/* Subtle dot grid overlay — slow breathing pulse */
+@keyframes breathe-grid {
+  0%, 100% { opacity: 0.04; }
+  50% { opacity: var(--grid-peak, 0.06); }
+}
+
+.hero-grid {
+  position: absolute;
+  inset: -20% -10%;
+  z-index: 0;
+  background-image: radial-gradient(circle, var(--color-gold) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  animation: breathe-grid 6s ease-in-out infinite;
+}
+
+/* Larger, more spaced dots on wide screens */
+@media (min-width: 80rem) {
+  .hero-grid {
+    background-size: 56px 56px;
+    --grid-peak: 0.07;
+  }
+}
+
+@media (min-width: 96rem) {
+  .hero-grid {
+    background-size: 64px 64px;
+    inset: -30% -15%;
+    --grid-peak: 0.08;
+  }
+}
+
+/* Elevate content above grid */
+.hero-glow > .text-center {
+  position: relative;
+  z-index: 1;
+}
+
+/* Decorative corner dots */
+.hero-corner {
+  position: absolute;
+  z-index: 1;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-gold-400, #d4a574);
+  opacity: 0.25;
+}
+
+.hero-corner--tl { top: 15%; left: 8%; }
+.hero-corner--tr { top: 10%; right: 6%; }
+.hero-corner--bl { bottom: 15%; left: 10%; }
+.hero-corner--br { bottom: 12%; right: 8%; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+.hero-corner {
+  animation: pulse-dot 4s ease-in-out infinite;
+}
+.hero-corner--tr { animation-delay: 1s; }
+.hero-corner--bl { animation-delay: 2s; }
+.hero-corner--br { animation-delay: 3s; }
+
+/* Greeting glow */
+.hero-greeting {
+  text-shadow: 0 0 40px color-mix(in oklab, var(--color-gold) 15%, transparent);
+}
+
+/* ========== Section divider ========== */
+.section-divider {
+  height: 1px;
+  border: none;
+  background: linear-gradient(to right, transparent, color-mix(in oklab, var(--color-gold) 15%, transparent), transparent);
+  margin: 0;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.section-divider--animated {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    color-mix(in oklab, var(--color-gold) 3%, transparent) 30%,
+    color-mix(in oklab, var(--color-gold) 12%, transparent) 50%,
+    color-mix(in oklab, var(--color-gold) 3%, transparent) 70%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 6s ease-in-out infinite;
+}
+
+/* ========== Skills badges ========== */
+.skill-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: color-mix(in oklab, var(--color-dark) 30%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid color-mix(in oklab, var(--color-dark-50) 8%, transparent);
+  border-radius: 9999px;
+  color: var(--color-dark-200);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-badge:hover {
+    border-color: color-mix(in oklab, var(--color-gold) 40%, transparent);
+    color: var(--color-gold);
+    background: color-mix(in oklab, var(--color-gold) 8%, transparent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px color-mix(in oklab, var(--color-gold) 10%, transparent);
+  }
+}
+
+/* ========== Active nav link ========== */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--color-gold-400, #d4a574);
+  transition: width 0.25s ease, left 0.25s ease;
+}
+
+.nav-link.active {
+  color: var(--color-gold-400, #d4a574);
+}
+
+.nav-link.active::after {
+  width: 60%;
+  left: 20%;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover::after {
+    width: 60%;
+    left: 20%;
+  }
+}
+
+/* ========== Decorative heading underline ========== */
+.heading-underline {
+  display: inline-block;
+  position: relative;
+}
+
+.heading-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background: var(--color-gold-400, #d4a574);
+  border-radius: 1px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

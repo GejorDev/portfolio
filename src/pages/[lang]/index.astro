@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Header from '../../components/Header.astro'
+import Hero from '../../components/Hero.astro'
+import About from '../../components/About.astro'
+import Skills from '../../components/Skills.astro'
+import Projects from '../../components/Projects.astro'
+import Footer from '../../components/Footer.astro'
+import LanguageToggle from '../../components/LanguageToggle.astro'
+import HeaderMobile from '../../components/HeaderMobile.astro'
+
+import personRaw from '../../data/person.json'
+import skills from '../../data/skills.json'
+import projects from '../../data/projects.json'
+import esLoc from '../../i18n/locales/es.json'
+import enLoc from '../../i18n/locales/en.json'
+import { getLocalizedPerson } from '../../i18n/utils'
+import type { Language } from '../../types'
+
+const lang = (Astro.params.lang ?? 'es') as Language
+const locales = lang === 'en' ? enLoc : esLoc
+const person = getLocalizedPerson(personRaw, lang)
+const year = new Date().getFullYear()
+const navItems = [
+  { href: '#hero', label: locales.nav.home },
+  { href: '#about', label: locales.nav.about },
+  { href: '#stack', label: locales.nav.stack },
+  { href: '#projects', label: locales.nav.projects },
+]
+---
+
+<Layout lang={lang}>
+  <Header lang={lang} locales={locales} navItems={navItems}>
+    <div slot="language-toggle">
+      <LanguageToggle
+        currentLang={lang}
+        labels={{
+          toggleToEnglish: locales.nav.toggleToEnglish,
+          toggleToSpanish: locales.nav.toggleToSpanish,
+        }}
+      />
+    </div>
+    <div slot="mobile-nav">
+      <HeaderMobile
+        lang={lang}
+        navItems={navItems}
+        labels={{
+          openMenu: locales.nav.openMenu,
+          closeMenu: locales.nav.closeMenu,
+        }}
+      />
+    </div>
+  </Header>
+
+  <Hero person={person} lang={lang} locales={locales} />
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <hr class="section-divider section-divider--animated" aria-hidden="true" />
+
+    <div data-section="about" data-reveal><About person={person} lang={lang} locales={locales} /></div>
+
+    <hr class="section-divider" aria-hidden="true" />
+
+    <div data-section="stack" data-reveal><Skills skills={skills} lang={lang} locales={locales} /></div>
+
+    <hr class="section-divider" aria-hidden="true" />
+
+    <div data-section="projects" data-reveal><Projects projects={projects.projects} lang={lang} locales={locales} /></div>
+  </main>
+
+  <div data-reveal><Footer person={person} lang={lang} locales={locales} year={year} /></div>
+
+  <!-- Mobile menu overlay (outside header to avoid backdrop-filter clipping) -->
+  <div
+    data-overlay
+    class="fixed inset-0 z-[60] bg-dark/95 backdrop-blur-sm hidden"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="flex flex-col items-center justify-center h-full gap-8">
+      <button
+        data-close-menu
+        class="absolute top-6 right-6 text-dark-200 hover:text-gold transition-colors p-2"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <nav data-testid="nav-mobile" class="flex flex-col items-center gap-8">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="text-xl font-medium text-dark-50 hover:text-gold transition-colors"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import '../../scripts/main'
+</script>

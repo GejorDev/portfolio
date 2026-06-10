@@ -1,0 +1,37 @@
+---
+import type { Person, Language, Locales } from '../types'
+
+export interface Props {
+  person: Person
+  lang: Language
+  locales: Locales
+}
+
+const { person, lang, locales } = Astro.props
+
+const intro = locales.about.intro.replace('{{name}}', person.name)
+---
+
+<section id="about" class="py-24 lg:py-32">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="heading-underline text-2xl sm:text-3xl font-bold text-dark-50 mb-8">
+      {locales.about.title}
+    </h2>
+    <p class="text-dark-200 leading-relaxed text-base sm:text-lg mb-6" set:html={intro}>
+    </p>
+    {
+      person.fullBio && (
+        <p class="text-dark-200 leading-relaxed text-base sm:text-lg">
+          {person.fullBio}
+        </p>
+      )
+    }
+    {
+      !person.fullBio && (
+        <p class="text-dark-200 leading-relaxed text-base sm:text-lg">
+          {locales.about.fallbackBio}
+        </p>
+      )
+    }
+  </div>
+</section>

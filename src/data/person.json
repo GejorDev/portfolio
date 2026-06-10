@@ -1,0 +1,15 @@
+{
+  "name": "Jorge Diego Alonso",
+  "surname": "Alonso",
+  "brandName": "GejorDev",
+  "tagline": "AI Engineer & Full Stack Developer",
+  "tagline_en": "AI Engineer & Full Stack Developer",
+  "fullBio": "Desarrollador Full Stack con experiencia en TypeScript, React, Next.js, Python, FastAPI y testing automatizado. Formado como AI Engineer con especialización en Retrieval Augmented Generation (RAG), bases de datos vectoriales (ChromaDB, Pinecone) y orquestación con LangChain. Apasionado por integrar IA en aplicaciones web escalables con arquitectura limpia.",
+  "fullBio_en": "Full Stack Developer with experience in TypeScript, React, Next.js, Python, FastAPI and automated testing. Trained as an AI Engineer specializing in Retrieval Augmented Generation (RAG), vector databases (ChromaDB, Pinecone) and LangChain orchestration. Passionate about integrating AI into scalable web applications with clean architecture.",
+  "location": "Tomiño, España",
+  "location_en": "Tomiño, Spain",
+  "phone": "664339696",
+  "email": "jorgediegoalonso12@gmail.com",
+  "linkedIn": "https://www.linkedin.com/in/jorge-diego-alonso-495826342",
+  "github": "https://github.com/GejorDev/portfolio"
+}

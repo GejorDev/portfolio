@@ -1,0 +1,28 @@
+/* Emerald — tech, fresca */
+@layer base {
+  :root {
+    --color-gold: #34d399;
+    --color-gold-50: #ecfdf5;
+    --color-gold-100: #d1fae5;
+    --color-gold-200: #a7f3d0;
+    --color-gold-300: #6ee7b7;
+    --color-gold-400: #34d399;
+    --color-gold-500: #10b981;
+    --color-gold-600: #059669;
+    --color-gold-700: #047857;
+    --color-gold-800: #065f46;
+    --color-gold-900: #064e3b;
+
+    --color-silver: #6ee7b7;
+    --color-silver-50: #ecfdf5;
+    --color-silver-100: #d1fae5;
+    --color-silver-200: #a7f3d0;
+    --color-silver-300: #6ee7b7;
+    --color-silver-400: #34d399;
+    --color-silver-500: #10b981;
+    --color-silver-600: #059669;
+    --color-silver-700: #047857;
+    --color-silver-800: #065f46;
+    --color-silver-900: #064e3b;
+  }
+}

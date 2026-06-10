@@ -1,0 +1,46 @@
+---
+import type { Locales } from '../types'
+
+export interface Props {
+  lang: 'es' | 'en'
+  locales: Locales
+  navItems: { href: string; label: string }[]
+}
+
+const { lang, locales, navItems } = Astro.props
+---
+
+<header class="sticky top-0 z-50 glass">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="text-xl font-bold text-gold hover:text-gold-300 transition-colors">
+        GejorDev
+      </a>
+
+      <!-- Desktop nav -->
+      <nav data-testid="nav-desktop" class="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        {
+          navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link text-sm font-medium text-dark-200 hover:text-gold"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+
+      <!-- Right side: language toggle + mobile hamburger -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center">
+          <slot name="language-toggle" />
+        </div>
+        <div class="md:hidden">
+          <slot name="mobile-nav" />
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

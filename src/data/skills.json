@@ -1,0 +1,77 @@
+{
+  "lenguajes": [
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "Java",
+    "C#",
+    "PHP"
+  ],
+  "frontend": [
+    "React",
+    "Next.js",
+    "Astro",
+    "Tailwind CSS",
+    "HTML",
+    "CSS"
+  ],
+  "backend": [
+    "FastAPI",
+    "SpringBoot",
+    "APIs RESTful"
+  ],
+  "basesDeDatos": [
+    "PostgreSQL",
+    "MongoDB",
+    "Redis"
+  ],
+  "aiMl": [
+    "Pandas",
+    "NumPy",
+    "Matplotlib",
+    "ETL",
+    "RAG (Retrieval Augmented Generation)",
+    "LangChain",
+    "Prompt Engineering"
+  ],
+  "vectorDb": [
+    "ChromaDB",
+    "Pinecone",
+    "Embeddings & Vector Search"
+  ],
+  "devOps": [
+    "Docker",
+    "GitHub Actions",
+    "CI/CD",
+    "Git",
+    "Postman"
+  ],
+  "fundamentos": [
+    "Programación orientada a objetos",
+    "Patrones de diseño",
+    "Metodologías ágiles"
+  ],
+  "fundamentos_en": [
+    "Object-oriented programming",
+    "Design patterns",
+    "Agile methodologies"
+  ],
+  "softSkills": [
+    "Trabajo en equipo",
+    "Resolución de problemas",
+    "Capacidad de aprendizaje"
+  ],
+  "softSkills_en": [
+    "Teamwork",
+    "Problem solving",
+    "Learning ability"
+  ],
+  "idiomas": {
+    "espanol": {
+      "level": "Nativo"
+    },
+    "ingles": {
+      "level": "B2"
+    }
+  }
+}

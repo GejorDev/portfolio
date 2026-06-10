@@ -1,0 +1,35 @@
+---
+export interface Props {
+  currentLang: 'es' | 'en'
+  labels: {
+    toggleToEnglish: string
+    toggleToSpanish: string
+  }
+}
+
+const { currentLang, labels } = Astro.props
+const nextLang = currentLang === 'es' ? 'en' : 'es'
+const label = currentLang === 'es' ? labels.toggleToEnglish : labels.toggleToSpanish
+---
+
+<button
+  data-lang-toggle
+  data-next-lang={nextLang}
+  class="flex items-center border border-dark-600 rounded-lg overflow-hidden text-xs font-medium transition-all hover:border-gold/50"
+  aria-label={label}
+>
+  <span
+    class={`px-3 py-1.5 transition-colors ${
+      currentLang === 'es' ? 'bg-gold text-dark' : 'text-dark-200 hover:text-gold'
+    }`}
+  >
+    ES
+  </span>
+  <span
+    class={`px-3 py-1.5 transition-colors ${
+      currentLang === 'en' ? 'bg-gold text-dark' : 'text-dark-200 hover:text-gold'
+    }`}
+  >
+    EN
+  </span>
+</button>

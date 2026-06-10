@@ -1,0 +1,56 @@
+---
+import type { SkillsData, Locales } from '../types'
+import { getLocalizedArray } from '../i18n/utils'
+
+export interface Props {
+  skills: SkillsData
+  lang: 'es' | 'en'
+  locales: Locales
+}
+
+const { skills, lang, locales } = Astro.props
+
+const categories: { key: string; skills: string[] }[] = [
+  { key: 'lenguajes', skills: skills.lenguajes },
+  { key: 'frontend', skills: skills.frontend },
+  { key: 'backend', skills: skills.backend },
+  { key: 'basesDeDatos', skills: skills.basesDeDatos },
+  { key: 'aiMl', skills: skills.aiMl },
+  { key: 'vectorDb', skills: skills.vectorDb },
+  { key: 'devOps', skills: skills.devOps },
+  { key: 'fundamentos', skills: getLocalizedArray(skills, 'fundamentos', lang) },
+  { key: 'softSkills', skills: getLocalizedArray(skills, 'softSkills', lang) },
+].filter((cat) => cat.skills && cat.skills.length > 0)
+---
+
+<section id="stack" class="py-24 lg:py-32">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="heading-underline text-2xl sm:text-3xl font-bold text-dark-50 mb-8">
+      {locales.skills.title}
+    </h2>
+    <p class="text-dark-200 mb-12">
+      {locales.skills.subtitle}
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        categories.map((cat) => (
+          <div data-stagger class="card-lift glass glass-hover rounded-lg p-6">
+            <h3 class="text-xs font-semibold text-gold uppercase tracking-widest mb-4">
+              {locales.skills.categories[cat.key] ?? cat.key}
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              {
+                cat.skills.map((skill) => (
+                  <span class="skill-badge">
+                    {skill}
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

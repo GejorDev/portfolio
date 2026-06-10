@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre mí",
+    "stack": "Stack",
+    "projects": "Proyectos",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "toggleToEnglish": "Cambiar a inglés",
+    "toggleToSpanish": "Cambiar a español"
+  },
+  "hero": {
+    "greeting": "Hola, soy {{name}}",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "phone": "Teléfono"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "intro": "Soy <strong>{{name}}</strong>, Desarrollador Full Stack y AI Engineer en formación.",
+    "fallbackBio": "Especializado en la creación de arquitecturas web modernas y escalables, con enfoque en UX/UI y metodologías ágiles."
+  },
+  "skills": {
+    "title": "Stack",
+    "subtitle": "Tecnologías y conceptos que utilizo en mis proyectos",
+    "categories": {
+      "lenguajes": "Lenguajes",
+      "frontend": "Frontend",
+      "backend": "Backend & APIs",
+      "basesDeDatos": "Bases de datos",
+      "aiMl": "AI & Machine Learning",
+      "vectorDb": "Vector Databases",
+      "devOps": "DevOps & Tools",
+      "fundamentos": "Fundamentos",
+      "softSkills": "Soft Skills"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Destacados",
+
+    "empty": {
+      "title": "Próximamente",
+      "description": "Estoy trabajando en nuevos proyectos. ¡Vuelve pronto!"
+    },
+    "items": {
+      "ecommerce": {
+        "title": "E-commerce Dashboard",
+        "description": "Plataforma de comercio electrónico con carrito de compras completo, integración con pasarelas de pago Stripe, y panel de administración con gráficos en tiempo real."
+      },
+      "analytics": {
+        "title": "Dashboard Analítico",
+        "description": "Dashboard analítico profesional para visualización de datos y métricas de negocio con integración de múltiples fuentes de datos y exportación a PDF."
+      },
+      "portfolio": {
+        "title": "Portfolio Personal",
+        "description": "Portfolio web responsivo construido con Astro y Tailwind CSS. Arquitectura frontend moderna con renderizado server-side sin JavaScript y mejora progresiva."
+      }
+    }
+  },
+  "footer": {
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "phone": "Teléfono",
+    "designedBy": "Diseñado y desarrollado por <span class=\"text-gold\">{{name}}</span>",
+    "builtWith": "Construido con Astro + Tailwind CSS + TypeScript",
+    "copyright": "© {{year}} Todos los derechos reservados.",
+    "githubLabel": "Ir al repositorio GitHub",
+    "sourceCode": "Ver código fuente en GitHub"
+  }
+}
