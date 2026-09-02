@@ -2,7 +2,7 @@
 
 Portfolio profesional de [GejorDev](https://gejor.dev) — AI Engineer & Full Stack Developer.
 
-![Astro](https://img.shields.io/badge/Astro-6-FF5D01?style=flat-square&logo=astro)
+![Astro](https://img.shields.io/badge/Astro-7-FF5D01?style=flat-square&logo=astro)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?style=flat-square&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?style=flat-square&logo=tailwind-css)
 
@@ -24,7 +24,7 @@ Portfolio profesional de [GejorDev](https://gejor.dev) — AI Engineer & Full St
 
 | Category          | Technology                          |
 |-------------------|-------------------------------------|
-| **Framework**     | Astro 6                             |
+| **Framework**     | Astro 7                             |
 | **Styling**       | Tailwind CSS 4 (CSS-first config)   |
 | **Typography**    | Inter + JetBrains Mono (Google Fonts) |
 | **Deploy**        | Vercel (server runtime)             |
