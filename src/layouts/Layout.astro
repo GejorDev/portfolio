@@ -10,11 +10,20 @@ export interface Props {
 
 const { lang, title, description, image } = Astro.props
 const siteTitle = title ?? 'GejorDev — Full Stack Developer'
-const siteDescription = description ?? 'Portfolio personal de Jorge Diego Alonso, desarrollador Full Stack'
+const siteDescription =
+  description ??
+  (lang === 'en'
+    ? 'Jorge Diego Alonso — Full Stack Developer portfolio'
+    : 'Portfolio de Jorge Diego Alonso, desarrollador Full Stack')
+const keywords =
+  lang === 'en'
+    ? 'full stack developer, portfolio, typescript, react, astro'
+    : 'desarrollador full stack, portfolio, typescript, react, astro'
 const siteImage = image ?? '/opengraph.jpg'
-const currentYear = new Date().getFullYear()
-const canonical = `https://gejor.dev${Astro.url.pathname.replace(/\/$/, '')}/`
-const ogImageUrl = `https://gejor.dev${siteImage}`
+const canonical = `${Astro.site}${Astro.url.pathname.replace(/\/$/, '')}/`
+const ogImageUrl = `${Astro.site}${siteImage}`
+const ogLocale = lang === 'es' ? 'es_ES' : 'en_US'
+const ogAlternateLocale = lang === 'es' ? 'en_US' : 'es_ES'
 const langAlternates = [
   { hreflang: 'es', href: canonical.replace(`/${lang}/`, '/es/') },
   { hreflang: 'en', href: canonical.replace(`/${lang}/`, '/en/') },
@@ -28,7 +37,7 @@ const langAlternates = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={siteDescription} />
-    <meta name="keywords" content="desarrollador full stack, portfolio, typescript, react, astro" />
+    <meta name="keywords" content={keywords} />
     <meta name="author" content="Jorge Diego Alonso" />
 
     <!-- Canonical + hreflang -->
@@ -43,14 +52,18 @@ const langAlternates = [
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content={siteTitle} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="GejorDev" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={ogAlternateLocale} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@gejordev" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={siteDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
